@@ -1,0 +1,39 @@
+@prefix : <http://example.org/abuse-of-women> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema> .
+@prefix owl: <http://www.w3.org/2002/07/owl> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+
+:Case_Hajduova_v_Slovakia a :LegalCase ;
+    :hasLegalStatus "final" ;
+    :hasLegalOutcome "violation of Articles 5 and 8 of the Convention" ;
+    :hasLegalEffect "judgment by the European Court of Human Rights" ;
+    :hasLegalDecision "The domestic authorities failed to comply with their statutory obligation" ;
+    :hasLegalReason "failure to order psychiatric detention of the perpetrator" .
+
+:Marta_Hajduova a :Victim ;
+    rdfs:label "Marta Hajduova" .
+
+:Perpetrator_A a :Perpetrator ;
+    rdfs:label "A" .
+
+:Abuse_Incident a :EmotionalAbuse ;
+    :hasPerpetrator :Perpetrator_A ;
+    :hasVictim :Marta_Hajduova ;
+    :hasConsequence :Consequence_Renewed_Threats ;
+    :hasContext :Context_Threats_Against_Lawyer ;
+    :hasLocation "Kosice" .
+
+:Consequence_Renewed_Threats a :Consequence ;
+    rdfs:label "Renewed threats against Marta Hajduova and her lawyer" .
+
+:Context_Threats_Against_Lawyer a :Context ;
+    rdfs:label "Threats against Marta Hajduova's lawyer and her employee" .
+
+:Legal_Judgment_Hajduova_v_Slovakia a :LegalJudgment ;
+    :hasRelatedTo :Abuse_Incident ;
+    :hasDamages :Damages_Compensation ;
+    rdfs:label "Judgment in the case of Hajduova v. Slovakia" .
+
+:Damages_Compensation a :Damages ;
+    rdfs:label "Compensation for Marta Hajduova" .

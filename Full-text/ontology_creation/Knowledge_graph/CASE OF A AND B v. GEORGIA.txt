@@ -1,0 +1,60 @@
+@prefix : <http://example.org/abuse-of-women#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+### Instances
+
+:Abuse_1 a :PhysicalAbuse, :EmotionalAbuse ;
+  :hasPerpetrator :D ;
+  :hasVictim :C ;
+  :hasContext :Context_1 ;
+  :hasConsequence :Consequence_1 ;
+  :hasLocation "Georgia" ;
+  :hasDuration "P2Y6M"^^xsd:duration ; # December 2011 - June 2012
+  :hasFrequency 20 ; # assuming approximately 20 incidents based on escalation over the period
+  :hasSeverity 5 . # assuming a severity scale of 1-10
+
+:D a :Perpetrator ;
+  rdfs:label "D" ;
+  rdfs:comment "The primary perpetrator, a police officer." .
+
+:C a :Victim ;
+  rdfs:label "C" ;
+  rdfs:comment "The primary victim, who endured physical and psychological harassment." .
+
+:Context_1 a :Context ;
+  rdfs:label "Relationship Dynamics and Escalating Abuse" ;
+  rdfs:comment "C and D cohabited from December 2011 to June 2012, marked by disputes, jealousy, physical, and psychological harassment. Abuse continued from December 2011, including threats to kill C and her family." .
+
+:Consequence_1 a :Consequence ;
+  rdfs:label "Failure of Protection and Escalation to Murder" ;
+  rdfs:comment "The systemic failure of Georgian authorities led to the escalation of violence, resulting in C's murder by D on 25 July 2014." .
+
+:LegalCase_1 a :LegalCase ;
+  rdfs:label "A and B v. Georgia" ;
+  rdfs:comment "A legal case brought before the European Court of Human Rights (ECHR)." ;
+  :hasLegalStatus "Closed" ;
+  :hasLegalOutcome "The ECHR found that the Georgian authorities failed to fulfill their obligations under Articles 2 and 14 of the Convention." ;
+  :hasLegalJudgment :LegalJudgment_1 .
+
+:LegalJudgment_1 a :LegalJudgment ;
+  rdfs:label "ECHR Judgment on A and B v. Georgia" ;
+  rdfs:comment "The ECHR highlighted the negligence and inaction of law enforcement, stressing the need for immediate and effective responses to domestic violence allegations." ;
+  :hasRelatedTo :Abuse_1 ;
+  :hasDamages "None" . # Assuming no damages were awarded; this may need adjustment based on full case details
+
+:Violation_1 a :Violation ;
+  rdfs:label "Violation of Articles 2 and 14" ;
+  rdfs:comment "Violation of the right to life and protection against discrimination under the European Convention on Human Rights." ;
+  :hasLegalCase :LegalCase_1 ;
+  :hasLegalArticle :LegalArticle_1, :LegalArticle_2 .
+
+:LegalArticle_1 a :LegalArticle ;
+  rdfs:label "Article 2 of the European Convention on Human Rights" ;
+  rdfs:comment "Right to life." .
+
+:LegalArticle_2 a :LegalArticle ;
+  rdfs:label "Article 14 of the European Convention on Human Rights" ;
+  rdfs:comment "Prohibition of discrimination." .

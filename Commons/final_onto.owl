@@ -1,0 +1,218 @@
+@prefix : <http://example.org/abuse-of-women#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+#Class
+
+:Abuse a owl:Class ;
+  rdfs:label "Abuse" ;
+  rdfs:comment "The act of abusing someone, especially a woman." .
+
+:PhysicalAbuse a owl:Class ;
+  rdfs:subClassOf :Abuse ;
+  rdfs:label "Physical Abuse" ;
+  rdfs:comment "The use of physical force against someone, especially a woman." .
+
+:EmotionalAbuse a owl:Class ;
+  rdfs:subClassOf :Abuse ;
+  rdfs:label "Emotional Abuse" ;
+  rdfs:comment "The use of words or actions to hurt someone emotionally, especially a woman." .
+
+:Perpetrator a owl:Class ;
+  rdfs:label "Perpetrator" ;
+  rdfs:comment "The person who commits the abuse." .
+
+:Victim a owl:Class ;
+  rdfs:label "Victim" ;
+  rdfs:comment "The person who is abused." .
+
+:Context a owl:Class ;
+  rdfs:label "Context" ;
+  rdfs:comment "The circumstances in which the abuse occurred." .
+
+:Consequence a owl:Class ;
+  rdfs:label "Consequence" ;
+  rdfs:comment "The result of the abuse." .
+
+:LegalCase a owl:Class ;
+  rdfs:label "Legal Case" ;
+  rdfs:comment "A case that is brought before a court of law." .
+
+:LegalJudgment a owl:Class ;
+  rdfs:subClassOf :LegalCase ;
+  rdfs:label "Legal Judgment" ;
+  rdfs:comment "The decision of a court of law in a legal case." .
+
+:LegalArticle a owl:Class ;
+  rdfs:label "Legal Article" ;
+  rdfs:comment "A provision in a legal document, such as a convention or treaty." .
+
+:Violation a owl:Class ;
+  rdfs:label "Violation" ;
+  rdfs:comment "The act of violating a legal provision." .
+
+:Damages a owl:Class ;
+  rdfs:label "Damages" ;
+  rdfs:comment "The compensation awarded to a party in a legal case." .
+
+
+##### ObjectProperty
+
+:hasPerpetrator a owl:ObjectProperty ;
+  rdfs:domain :Abuse ;
+  rdfs:range :Perpetrator ;
+  rdfs:label "has perpetrator" ;
+  rdfs:comment "The perpetrator of the abuse." .
+
+:hasVictim a owl:ObjectProperty ;
+  rdfs:domain :Abuse ;
+  rdfs:range :Victim ;
+  rdfs:label "has victim" ;
+  rdfs:comment "The victim of the abuse." .
+
+:hasContext a owl:ObjectProperty ;
+  rdfs:domain :Abuse ;
+  rdfs:range :Context ;
+  rdfs:label "has context" ;
+  rdfs:comment "The context of the abuse." .
+
+:hasConsequence a owl:ObjectProperty ;
+  rdfs:domain :Abuse ;
+  rdfs:range :Consequence ;
+  rdfs:label "has consequence" ;
+  rdfs:comment "The consequence of the abuse." .
+
+:hasLegalCase a owl:ObjectProperty ;
+  rdfs:domain :Violation ;
+  rdfs:range :LegalCase ;
+  rdfs:label "has legal case" ;
+  rdfs:comment "The legal case in which the violation occurred." .
+
+:hasLegalJudgment a owl:ObjectProperty ;
+  rdfs:domain :LegalCase ;
+  rdfs:range :LegalJudgment ;
+  rdfs:label "has legal judgment" ;
+  rdfs:comment "The judgment in the legal case." .
+
+:hasLegalArticle a owl:ObjectProperty ;
+  rdfs:domain :Violation ;
+  rdfs:range :LegalArticle ;
+  rdfs:label "has legal article" ;
+  rdfs:comment "The legal article that was violated." .
+
+:hasDamages a owl:ObjectProperty ;
+  rdfs:domain :LegalJudgment ;
+  rdfs:range :Damages ;
+  rdfs:label "has damages" ;
+  rdfs:comment "The damages awarded in the legal judgment." .
+
+:hasRelatedTo a owl:ObjectProperty ;
+  rdfs:domain :LegalJudgment ;
+  rdfs:range :Abuse ;
+  rdfs:label "has related to" ;
+  rdfs:comment "The abuse that is related to the legal judgment." .
+
+##### DataProperty
+
+:hasLocation a owl:DatatypeProperty ;
+  rdfs:domain :Abuse ;
+  rdfs:range xsd:string ;
+  rdfs:label "has location" ;
+  rdfs:comment "The location of the abuse." .
+
+:hasDuration a owl:DatatypeProperty ;
+  rdfs:domain :Abuse ;
+  rdfs:range xsd:duration ;
+  rdfs:label "has duration" ;
+  rdfs:comment "The duration of the abuse." .
+
+:hasFrequency a owl:DatatypeProperty ;
+  rdfs:domain :Abuse ;
+  rdfs:range xsd:integer ;
+  rdfs:label "has frequency" ;
+  rdfs:comment "The frequency of the abuse." .
+
+:hasSeverity a owl:DatatypeProperty ;
+  rdfs:domain :Abuse ;
+  rdfs:range xsd:integer ;
+  rdfs:label "has severity" ;
+  rdfs:comment "The severity of the abuse." .
+
+:hasLegalStatus a owl:DatatypeProperty ;
+  rdfs:domain :LegalCase ;
+  rdfs:range xsd:string ;
+  rdfs:label "has legal status" ;
+  rdfs:comment "The legal status of the case." .
+
+:hasLegalOutcome a owl:DatatypeProperty ;
+  rdfs:domain :LegalCase ;
+  rdfs:range xsd:string ;
+  rdfs:label "has legal outcome" ;
+  rdfs:comment "The outcome of the legal case." .
+
+:hasLegalEffect a owl:DatatypeProperty ;
+  rdfs:domain :LegalCase ;
+  rdfs:range xsd:string ;
+  rdfs:label "has legal effect" ;
+  rdfs:comment "The effect of the legal case." .
+
+:hasLegalConsequence a owl:DatatypeProperty ;
+  rdfs:domain :LegalCase ;
+  rdfs:range xsd:string ;
+  rdfs:label "has legal consequence" ;
+  rdfs:comment "The legal consequence of the case." .
+
+:hasLegalDamages a owl:DatatypeProperty ;
+  rdfs:domain :LegalCase ;
+  rdfs:range xsd:decimal ;
+  rdfs:label "has legal damages" ;
+  rdfs:comment "The damages awarded in the legal case." .
+
+:hasLegalCosts a owl:DatatypeProperty ;
+  rdfs:domain :LegalCase ;
+  rdfs:range xsd:decimal ;
+  rdfs:label "has legal costs" ;
+  rdfs:comment "The costs of the legal case." .
+
+:hasLegalTime a owl:DatatypeProperty ;
+  rdfs:domain :LegalCase ;
+  rdfs:range xsd:duration ;
+  rdfs:label "has legal time" ;
+  rdfs:comment "The time taken for the legal case." .
+
+:hasLegalJudge a owl:DatatypeProperty ;
+  rdfs:domain :LegalCase ;
+  rdfs:range xsd:string ;
+  rdfs:label "has legal judge" ;
+  rdfs:comment "The judge in the legal case." .
+
+:hasLegalLawyer a owl:DatatypeProperty ;
+  rdfs:domain :LegalCase ;
+  rdfs:range xsd:string ;
+  rdfs:label "has legal lawyer" ;
+  rdfs:comment "The lawyer in the legal case." .
+
+:hasLegalWitness a owl:DatatypeProperty ;
+  rdfs:domain :LegalCase ;
+  rdfs:range xsd:string ;
+  rdfs:label "has legal witness" ;
+  rdfs:comment "The witness in the legal case." .
+
+:hasLegalDecision a owl:DatatypeProperty ;
+  rdfs:domain :LegalCase ;
+  rdfs:range xsd:string ;
+  rdfs:label "has legal decision" ;
+  rdfs:comment "The decision in the legal case." .
+
+:hasLegalReason a owl:DatatypeProperty ;
+  rdfs:domain :LegalCase ;
+  rdfs:range xsd:string ;
+  rdfs:label "has legal reason" ;
+  rdfs:comment "The reason for the decision in the legal case." .
+
+:hasLegalSanction a owl:DatatypeProperty ;
+  rdfs:domain :LegalCase ;
+  rdfs:range xsd:string ;
+  rdfs:label "has legal sanction" ;
+  rdfs:comment "The sanction in the legal case." .

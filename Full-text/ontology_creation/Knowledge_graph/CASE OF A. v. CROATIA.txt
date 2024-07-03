@@ -1,0 +1,46 @@
+@prefix : http://example.org/abuse-of-women .
+@prefix rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns .
+@prefix rdfs: http://www.w3.org/2000/01/rdf-schema .
+@prefix owl: http://www.w3.org/2002/07/owl .
+@prefix xsd: http://www.w3.org/2001/XMLSchema .
+
+:case_55164_08 a :LegalCase ;
+    rdfs:label "Case against the Republic of Croatia (Application no. 55164/08)" ;
+    :hasLegalStatus "Final" ;
+    :hasLegalOutcome "Judgment" ;
+    :hasLegalDate "2011-01-14"^^xsd:date ;
+    :hasLegalJudge "Christos Rozakis" .
+
+:abuse_instance_1 a :PhysicalAbuse ;
+    :hasPerpetrator :B ;
+    :hasVictim :Ms_A ;
+    :hasContext :marriage_context_1 ;
+    :hasConsequence :consequence_1 .
+
+:marriage_context_1 a :Context ;
+    rdfs:label "Marriage and Divorce" ;
+    :hasLocation "Z." ;
+    :hasDuration "P4Y"^^xsd:duration .
+
+:consequence_1 a :Consequence ;
+    rdfs:label "Effects of Abuse on Ms. A" .
+
+:B a :Perpetrator ;
+    rdfs:label "B" ;
+    rdfs:comment "The applicant's ex-husband" .
+
+:Ms_A a :Victim ;
+    rdfs:label "Ms. A" ;
+    rdfs:comment "The applicant" .
+
+:psychiatric_report a :Context ;
+    rdfs:label "B's Psychiatric Report" ;
+    :hasLocation "Z." ;
+    :hasDate "2004-12-06"^^xsd:date ;
+    :hasDescription "B had been captured during the Homeland War and detained in a concentration camp where he had been tortured and had sustained serious bodily injuries. Since 1992 he had been suffering from mental disorders such as anxiety, paranoia, epilepsy and PTSD." .
+
+:divorce_case a :LegalCase ;
+    rdfs:label "Divorce Case" ;
+    :hasLegalStatus "Dissolved" ;
+    :hasLegalDate "2006-11-07"^^xsd:date ;
+    :hasLegalJudge "Z. Municipal Court" .

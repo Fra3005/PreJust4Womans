@@ -1,0 +1,12 @@
+Given this KG, answer to this questions exrtacting the answers from KG. 
+Do not try to generate answers that are not in KG.
+Do not try to generate other questions. 
+If the answer is not provided in the KG just answer "the information is not provided".
+If there are multiple object (for example abuse1, abuse2 or consequence 1 and consequence 2) create a different answer for each of them.
+Generate the output in csv format.
+
+#KG
+{kg}
+
+#Questions
+{cqs}

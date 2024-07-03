@@ -1,0 +1,58 @@
+@prefix : <http://example.org/abuse-of-women#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:AAandOthers_v_Sweden rdf:type :LegalCase ;
+    :hasLocation "Sweden" ;
+    :hasLegalStatus "Pending" ;
+    :hasLegalOutcome "Recognized risk if returned to Yemen" ;
+    :hasLegalDecision "Not to return the applicants to Yemen" ;
+    :hasLegalReason "Lack of effective legal protection and societal norms that condone abuse" ;
+    :hasRelatedTo :DomesticAbuse .
+
+:DomesticAbuse rdf:type :Abuse ;
+    :hasContext :YemenContext ;
+    :hasPerpetrator :MaleFamilyMembers ;
+    :hasVictim :WomenAndChildren ;
+    :hasConsequence :LegalAndSocialConsequences .
+
+:YemenContext rdf:type :Context ;
+    rdfs:comment "The circumstances in which the abuse occurred in Yemen" ;
+    :hasLocation "Yemen" ;
+    :hasDuration "Indeterminate" ;
+    :hasFrequency "Frequent" ;
+    :hasSeverity "Severe" .
+
+:MaleFamilyMembers rdf:type :Perpetrator ;
+    rdfs:comment "The person who commits the abuse." .
+
+:WomenAndChildren rdf:type :Victim ;
+    rdfs:comment "The person who is abused." .
+
+:LegalAndSocialConsequences rdf:type :Consequence ;
+    rdfs:comment "The result of the abuse." ;
+    :hasLegalRecourse "Minimal protection against domestic violence" ;
+    :hasSocialConsequences "Discriminated against women under social customs and Shari’a law" .
+
+:PhysicalAbuseInstance rdf:type :PhysicalAbuse ;
+    rdfs:comment "The use of physical force against someone, especially a woman." ;
+    :hasPerpetrator :MaleFamilyMembers ;
+    :hasVictim :WomenAndChildren ;
+    :hasSeverity "Severe" ;
+    :hasFrequency "Frequent" .
+
+:EmotionalAbuseInstance rdf:type :EmotionalAbuse ;
+    rdfs:comment "The use of words or actions to hurt someone emotionally, especially a woman." ;
+    :hasPerpetrator :MaleFamilyMembers ;
+    :hasVictim :WomenAndChildren ;
+    :hasSeverity "Severe" ;
+    :hasFrequency "Frequent" .
+
+:EuropeanCourtOfHumanRights rdf:type :LegalJudgment ;
+    :hasRelatedTo :DomesticAbuse ;
+    :hasLegalEffect "Acknowledged severe risk faced by the applicants if returned to Yemen" ;
+    :hasLegalArticle "Protection under international human rights law" ;
+    :hasLegalDecision "Applicants not to be returned to Yemen" .
+

@@ -1,0 +1,60 @@
+
+@prefix : <http://example.org/abuse-of-women#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+:Abuse a owl:Class ;
+  rdfs:label "Abuse" ;
+  rdfs:comment "The act of abusing someone, especially a woman." .
+
+:PhysicalAbuse a owl:Class ;
+  rdfs:subClassOf :Abuse ;
+  rdfs:label "Physical Abuse" ;
+  rdfs:comment "The use of physical force against someone, especially a woman." .
+
+:EmotionalAbuse a owl:Class ;
+  rdfs:subClassOf :Abuse ;
+  rdfs:label "Emotional Abuse" ;
+  rdfs:comment "The use of words or actions to hurt someone emotionally, especially a woman." .
+
+:Perpetrator a owl:Class ;
+  rdfs:label "Perpetrator" ;
+  rdfs:comment "The person who commits the abuse." .
+
+:Victim a owl:Class ;
+  rdfs:label "Victim" ;
+  rdfs:comment "The person who is abused." .
+
+:Context a owl:Class ;
+  rdfs:label "Context" ;
+  rdfs:comment "The circumstances in which the abuse occurred." .
+
+:Consequence a owl:Class ;
+  rdfs:label "Consequence" ;
+  rdfs:comment "The result of the abuse." .
+
+:hasPerpetrator a owl:ObjectProperty ;
+  rdfs:domain :Abuse ;
+  rdfs:range :Perpetrator ;
+  rdfs:label "has perpetrator" ;
+  rdfs:comment "The perpetrator of the abuse." .
+
+:hasVictim a owl:ObjectProperty ;
+  rdfs:domain :Abuse ;
+  rdfs:range :Victim ;
+  rdfs:label "has victim" ;
+  rdfs:comment "The victim of the abuse." .
+
+:hasContext a owl:ObjectProperty ;
+  rdfs:domain :Abuse ;
+  rdfs:range :Context ;
+  rdfs:label "has context" ;
+  rdfs:comment "The context of the abuse." .
+
+:hasConsequence a owl:ObjectProperty ;
+  rdfs:domain :Abuse ;
+  rdfs:range :Consequence ;
+  rdfs:label "has consequence" ;
+  rdfs:comment "The consequence of the abuse." .
+```

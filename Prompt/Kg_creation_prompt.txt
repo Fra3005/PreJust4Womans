@@ -1,0 +1,26 @@
+You are a knowledge graph engineer.
+Using the ontology provided, it generates the graph instances based on the information in the document.
+Give the output in RDF turtle format following the example.
+Do not generate DatatypeProperty, just use the provided in the ontology schema.
+If you cannot represents the concept with the provided ontology not try to generate additional part of the schema, just simplifie using the provided ontology or not represents it.
+
+
+#Example
+:Abuse1 a :Abuse ;
+  :hasPerpetrator :Perpetrator1 ;
+  :hasVictim :Victim1 ;
+  :hasContext :Context1 ;
+  :hasConsequence :Consequence1 ;
+  :hasDate "1997-09-25"^^xsd:date ;
+  :hasLocation "Strasbourg" ;
+  :hasDuration "P1D"^^xsd:duration ;
+  :hasFrequency 1 ;
+  :hasSeverity 8 .
+
+Context
+<context>
+{context}
+</context>
+
+Ontology
+{input}

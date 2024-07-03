@@ -1,0 +1,8 @@
+[INST]
+Based on the following ontology, create a list of competency questions.
+Do not generate other answers.
+
+##Ontology
+{source} 
+
+[/INST]

@@ -1,0 +1,97 @@
+@prefix : <http://example.org/abuse-of-women#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Instances of classes
+:MsAydin a :Victim ;
+  rdfs:label "Ms. Aydin" .
+
+:StateAuthorities a :Perpetrator ;
+  rdfs:label "State Authorities" .
+
+:AydinCase a :LegalCase ;
+  rdfs:label "Aydin v. Turkey" ;
+  :hasLegalStatus "Closed" ;
+  :hasLegalOutcome "ECHR Judgment" ;
+  :hasLegalEffect "Found violations of ECHR Articles 3, 13, and 25" ;
+  :hasLegalConsequence "Turkey obliged to prevent torture, ensure effective remedies, and protect petition rights" ;
+  :hasLegalTime "Years" .
+
+:AydinJudgment a :LegalJudgment ;
+  rdfs:label "ECHR Judgment in Aydin v. Turkey" ;
+  :hasDamages "None specified" ;
+  :hasRelatedTo :AbuseIncident1, :AbuseIncident2, :AbuseIncident3 .
+
+:Article3 a :LegalArticle ;
+  rdfs:label "Article 3" ;
+  rdfs:comment "Prohibition of Torture" .
+
+:Article13 a :LegalArticle ;
+  rdfs:label "Article 13" ;
+  rdfs:comment "Right to an Effective Remedy" .
+
+:Article25 a :LegalArticle ;
+  rdfs:label "Article 25" ;
+  rdfs:comment "Right to Petition" .
+
+:Violation1 a :Violation ;
+  rdfs:label "Violation of Article 3" ;
+  :hasLegalArticle :Article3 ;
+  :hasLegalCase :AydinCase .
+
+:Violation2 a :Violation ;
+  rdfs:label "Violation of Article 13" ;
+  :hasLegalArticle :Article13 ;
+  :hasLegalCase :AydinCase .
+
+:Violation3 a :Violation ;
+  rdfs:label "Violation of Article 25" ;
+  :hasLegalArticle :Article25 ;
+  :hasLegalCase :AydinCase .
+
+:PhysicalAbuseIncident a :PhysicalAbuse ;
+  :hasVictim :MsAydin ;
+  :hasPerpetrator :StateAuthorities ;
+  :hasContext "Detention" ;
+  :hasSeverity 5 ;
+  :hasConsequence "Severe physical pain and suffering" ;
+  rdfs:label "Physical Abuse of Ms. Aydin" .
+
+:SexualAbuseIncident a :PhysicalAbuse ;
+  :hasVictim :MsAydin ;
+  :hasPerpetrator :StateAuthorities ;
+  :hasContext "Detention" ;
+  :hasSeverity 10 ;
+  :hasConsequence "Bruising and psychological trauma" ;
+  rdfs:label "Sexual Abuse of Ms. Aydin" .
+
+:EmotionalAbuseIncident a :EmotionalAbuse ;
+  :hasVictim :MsAydin ;
+  :hasPerpetrator :StateAuthorities ;
+  :hasContext "Detention" ;
+  :hasSeverity 7 ;
+  :hasConsequence "Profound emotional impact" ;
+  rdfs:label "Emotional Abuse of Ms. Aydin" .
+
+# Link between abuses and legal judgment
+:AydinJudgment :hasRelatedTo :PhysicalAbuseIncident, :SexualAbuseIncident, :EmotionalAbuseIncident .
+
+# Context and consequences of abuses
+:AbuseIncident1 a :Context ;
+  rdfs:label "Context of Physical Abuse" ;
+  :hasLocation "Detention" .
+
+:AbuseIncident2 a :Context ;
+  rdfs:label "Context of Sexual Abuse" ;
+  :hasLocation "Detention" .
+
+:AbuseIncident3 a :Context ;
+  rdfs:label "Context of Emotional Abuse" ;
+  :hasLocation "Detention" .
+
+# Additional data properties
+:PhysicalAbuseIncident :hasFrequency 1 ;
+:SexualAbuseIncident :hasFrequency 1 ;
+:EmotionalAbuseIncident :hasFrequency 1 ;

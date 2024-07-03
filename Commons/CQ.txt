@@ -1,0 +1,14 @@
+
+1-What is the legal outcome of Case?
+2-Which legal case is associated with Violation?
+3-What is the legal status?
+4-How much in legal damages and costs were awarded?
+5-Which court judged the Case?
+6-What is the reason stated for the judgment?
+7-What is the context of Abuse?
+8-What are the consequences of Abuse?
+9-What is the duration and frequency of Abuse?
+10-What is the severity level of Abuse?
+11-Which legal article are violated?
+12-What abuse is related to Judgment?
+13-What are the damages related to Judgment?

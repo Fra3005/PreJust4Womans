@@ -1,0 +1,14 @@
+Question,Answer
+What is the legal outcome of Case?,Recognized risk if returned to Yemen
+Which legal case is associated with Violation?,
+What is the legal status?,Pending
+How much in legal damages and costs were awarded?,
+Which court judged the Case?,
+What is the reason stated for the judgment?,Lack of effective legal protection and societal norms that condone abuse
+What is the context of Abuse?,"The circumstances in which the abuse occurred in Yemen, with the location being 'Yemen', duration 'Indeterminate', frequency 'Frequent', and severity 'Severe'"
+What are the consequences of Abuse?,1. Minimal protection against domestic violence (Legal recourse); 2. Discriminated against women under social customs and Shari’a law (Social consequences)
+What is the duration and frequency of Abuse?,Duration: Indeterminate; Frequency: Frequent
+What is the severity level of Abuse?,Severe
+Which legal article are violated?,Protection under international human rights law
+What abuse is related to Judgment?,DomesticAbuse
+What are the damages related to Judgment?,
