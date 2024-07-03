@@ -11,6 +11,7 @@ structured data collection using artificial intelligence to analyze the phenomen
 In the **Commons** folder are the common files for both sides considered.
 In the **Prompt** folder are all the prompt file used for both sides considered.
 **nlp_comparison** represent the script used to compare the number of triples using nlp's standard approaches.
+For more information read the documents in **Documents** folder.
 
 ### Steps to perform
 
