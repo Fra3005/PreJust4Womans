@@ -1,0 +1,47 @@
+@prefix : <http://example.org/abuse-of-women#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Case1 a :LegalCase ;
+  :hasLegalStatus "Admissible" ;
+  :hasLegalOutcome "Violation of Article 2 under its substantive positive and procedural limbs taken in conjunction with Article 14 of the Convention" ;
+  :hasLegalDecision "The respondent State is to pay the applicants jointly EUR 35,000 plus any tax in respect of non-pecuniary damage within three months" ;
+  :hasLegalJudgment :Judgment1 ;
+  :hasLegalReason "Failure to prevent gender-based violence and inadequate response to domestic violence allegations" .
+
+:Judgment1 a :LegalJudgment ;
+  :hasDamages :Damages1 ;
+  :hasRelatedTo :Abuse1 .
+
+:Damages1 a :Damages ;
+  rdfs:label "EUR 35,000 plus any tax in respect of non-pecuniary damage" .
+
+:Abuse1 a :PhysicalAbuse ;
+  :hasPerpetrator :Perpetrator1 ;
+  :hasVictim :Victim1 ;
+  :hasContext :Context1 ;
+  :hasConsequence :Consequence1 ;
+  :hasLocation "Home" ;
+  :hasSeverity 10 ;
+  :hasFrequency 1 .
+
+:Perpetrator1 a :Perpetrator ;
+  rdfs:label "Police Officer" .
+
+:Victim1 a :Victim ;
+  rdfs:label "C" .
+
+:Context1 a :Context ;
+  rdfs:label "Domestic Violence involving a police officer with access to a firearm" .
+
+:Consequence1 a :Consequence ;
+  rdfs:label "Murder of C" .
+
+:Violation1 a :Violation ;
+  :hasLegalCase :Case1 ;
+  :hasLegalArticle :Article2 .
+
+:Article2 a :LegalArticle ;
+  rdfs:label "Article 2 of the Convention" .

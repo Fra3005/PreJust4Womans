@@ -1,0 +1,46 @@
+@prefix : <http://example.org/abuse-of-women#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Violation1 a :Violation ;
+  :hasLegalCase :LegalCase1 ;
+  :hasLegalArticle :LegalArticle8 .
+
+:LegalCase1 a :LegalCase ;
+  :hasLegalStatus "admissible"^^xsd:string ;
+  :hasLegalOutcome "violation"^^xsd:string ;
+  :hasLegalJudgment :LegalJudgment1 ;
+  :hasLegalDamages 4000.00 ;
+  :hasLegalCosts 1000.00 ;
+  :hasLegalDecision "non-pecuniary damage and costs and expenses"^^xsd:string ;
+  :hasLegalReason "violation of Article 8 of the Convention"^^xsd:string .
+
+:LegalJudgment1 a :LegalJudgment ;
+  :hasDamages :Damages1 ;
+  :hasRelatedTo :Abuse1 .
+
+:Damages1 a :Damages ;
+  :hasLegalDamages 4000.00 .
+
+:Abuse1 a :EmotionalAbuse ;
+  :hasPerpetrator :Perpetrator1 ;
+  :hasVictim :Victim1 ;
+  :hasContext :Context1 ;
+  :hasConsequence :Consequence1 .
+
+:Perpetrator1 a :Perpetrator ;
+  rdfs:label "State of Slovakia" .
+
+:Victim1 a :Victim ;
+  rdfs:label "Applicant" .
+
+:Context1 a :Context ;
+  rdfs:label "Violation of Article 8 of the Convention" .
+
+:Consequence1 a :Consequence ;
+  rdfs:label "Non-pecuniary damage and costs and expenses" .
+
+:LegalArticle8 a :LegalArticle ;
+  rdfs:label "Article 8 of the Convention" .

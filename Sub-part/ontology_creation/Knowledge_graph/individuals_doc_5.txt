@@ -1,0 +1,16 @@
+
+
+### Response
+:Abuse1 a :Abuse ;
+  :hasPerpetrator :Perpetrator1 ;
+  :hasVictim :Victim1 ;
+  :hasContext :Context1 ;
+  :hasConsequence :Consequence1 .
+
+:Perpetrator1 a :Perpetrator .
+
+:Victim1 a :Victim .
+
+:Context1 a :Context .
+
+:Consequence1 a :Consequence .

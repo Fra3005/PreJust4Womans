@@ -28,9 +28,11 @@ os.environ["TOGETHER_API_KEY"] = api_key
 # 5-CASE_OF_A.A._AND_OTHERS_v._SWEDEN
 
 
+
+#Creation of the retriever for the specified document
 numero_doc = 3
 
-loader = TextLoader(f"doc\\{numero_doc}.txt", encoding = 'UTF-8')
+loader = TextLoader(f"Sub-part\data\\{numero_doc}.txt", encoding = 'UTF-8')
 docs = loader.load()
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
 documents = text_splitter.split_documents(docs)
@@ -46,82 +48,63 @@ for d in documents:
 retriever = vector.as_retriever()
 ###
 
-#Utilizzata per specializzare l'ontologia
+#Function to specialize base ontology taking the information from the document
 def specialize_ontology():
     time.sleep(5)
     model = Together(model = "mistralai/Mixtral-8x22B-Instruct-v0.1", max_tokens=1000, temperature= 0.6) 
-    template = read_txt("ontology\expand_onto_prompt.txt")
+    template = read_txt("Prompt\expand_onto_prompt.txt")
     prompt = PromptTemplate.from_template(template)
     document_chain = create_stuff_documents_chain(model, prompt) #
     retrieval_chain = create_retrieval_chain(retriever, document_chain) #
-    onto = read_txt("ontology\\base_ontology.txt")                  
+    onto = read_txt("Commons\\base_ontology.txt")                  
     response = retrieval_chain.invoke({"input" : onto})
-    with open(f"ontology\\final_onto.owl","w",encoding="utf-8") as f:
+    with open(f"Commons\\final_onto.owl","w",encoding="utf-8") as f:
             f.write(response["answer"])
 
-#Genera le istanze partendo dal docmuneto
+#function to generate kgs from the final ontology 
 def triple_from_ontology():
     model = Together(model = "mistralai/Mixtral-8x22B-Instruct-v0.1", max_tokens=2500, temperature= 0.6) 
-    template = read_txt("KG_creation\KG_prompt.txt")
+    template = read_txt("Prompt\Kg_creation_prompt.txt")
     prompt = PromptTemplate.from_template(template)
     document_chain = create_stuff_documents_chain(model, prompt) 
     retrieval_chain = create_retrieval_chain(retriever, document_chain) 
-    tmp = read_txt("ontology\\final_onto.owl")                  
+    tmp = read_txt("Commons\\final_onto.owl")                  
     response = retrieval_chain.invoke({"input" : tmp})
-    with open(f"KG_creation\individuals_doc_{numero_doc}.txt",'w',encoding="utf-8") as f:
+    with open(f"Sub-part\ontology_creation\Knowledge_graph\individuals_doc_{numero_doc}.txt",'w',encoding="utf-8") as f:
         f.write(response["answer"])
 
-#Genera il singolo KG, va ripetuto utilizzando due doc per volta
-def generate_single_KG():
-    txt1="KG_creation\individuals_doc_1.txt"
-    txt2="KG_creation\individuals_doc_2.txt"
 
-    model = Together(model = "mistralai/Mixtral-8x22B-Instruct-v0.1", max_tokens=3000, temperature= 0.6) 
-    time.sleep(5)
-    template = read_txt("KG_creation\single_KG_prompt.txt")
-    prompt = PromptTemplate.from_template(template)
-    chain = prompt | model | StrOutputParser()
-    response = chain.invoke({"txt1": txt1, "txt2": txt2})
-    with open("KG_creation\\all_doc_in_one.ttl", 'w', encoding="utf-8") as f:
-        f.write(response)
-
-#Genera  le CQs
+#function to generate cqs
 def generate_CQ():
-    onto=read_txt("ontology\\final_onto.owl")
+    onto=read_txt("Commons\\final_onto.owl")
     model = Together(model = "mistralai/Mixtral-8x22B-Instruct-v0.1", max_tokens=1000, temperature= 0.6) 
     time.sleep(5)
-    template = read_txt("CQ_answering\CQ_generated_prompt")
+    template = read_txt("Prompt\Generate_cqs_prompt.txt")
     prompt = PromptTemplate.from_template(template)
     chain = prompt | model | StrOutputParser()
     response = chain.invoke({"source": onto})
-    with open("CQ_answering\CQ.txt", 'w', encoding="utf-8") as f:
+    with open("Commons\CQ1.txt", 'w', encoding="utf-8") as f:
         f.write(response)        
 
-#Risponde alle CQs
+#function to make answer for each knwoledge graph
 def CQ_Answering():
     model = Together(model = "mistralai/Mixtral-8x22B-Instruct-v0.1", max_tokens=1500, temperature= 0.6) 
-    template = read_txt("evaluation\eval_prompt.txt")
-    kg = read_txt(f"KG_creation\individuals_doc_{numero_doc}.txt")
-    cqs = read_txt("CQ_answering\CQ.txt")
+    template = read_txt("Prompt\\answering_cqs_prompt.txt")
+    kg = read_txt(f"Sub-part\ontology_creation\Knowledge_graph\individuals_doc_{numero_doc}.txt")
+    cqs = read_txt("Commons\CQ.txt")
     prompt = PromptTemplate.from_template(template)
     chain = prompt | model | StrOutputParser()
     response = chain.invoke({"kg": kg, "cqs": cqs})
-    with open(f"evaluation\eval_{numero_doc}.txt",'w',encoding="utf-8") as f:
+    with open(f"Sub-part\ontology_creation\Cqs_Answering\eval_{numero_doc}1.txt",'w',encoding="utf-8") as f:
             f.write(response)
-
-#Genera il singolo KG, va ripetuto utilizzando due doc per volta
-def generate_single_KG():
-    txt1="KG_creation\individuals_doc_1.txt"
-    txt2="KG_creation\individuals_doc_2.txt"
-
-    model = Together(model = "mistralai/Mixtral-8x22B-Instruct-v0.1", max_tokens=3000, temperature= 0.6) 
-    time.sleep(5)
-    template = read_txt("KG_creation\single_KG_prompt.txt")
-    prompt = PromptTemplate.from_template(template)
-    chain = prompt | model | StrOutputParser()
-    response = chain.invoke({"txt1": txt1, "txt2": txt2})
-    with open("KG_creation\\all_doc_in_one.ttl", 'w', encoding="utf-8") as f:
-        f.write(response)
 
 
 print(f"\nnumero doc : {numero_doc}")
+
+
+#PIPELINE TO GENERATE ALL THE FILES NEEDED
+
+#specialize_ontology()
+#triple_from_ontology()
+#generate_CQ()
+#CQ_Answering()

@@ -1,7 +1,6 @@
 You are an ontology expert.
-Following the given ontology extends it for describe key concepts that can you extract from this context.
-Generate only the classes, data property and object property.
-Do not generate answers or individuals.
+Following the given ontology extends it, creating data property and object property, for describes the context.
+Do not generate Class or Individuals.
 
 ### Context
 <context>

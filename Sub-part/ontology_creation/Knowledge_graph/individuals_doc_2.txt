@@ -1,0 +1,61 @@
+@prefix : <http://example.org/abuse-of-women#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+### Abuse
+:Abuse1 a :Abuse ;
+  :hasPerpetrator :Perpetrator1 ;
+  :hasVictim :Victim1 ;
+  :hasContext :Context1 ;
+  :hasConsequence :Consequence1 ;
+  :hasDate "1997-09-25"^^xsd:date ;
+  :hasLocation "Strasbourg" ;
+  :hasDuration "P1D"^^xsd:duration ;
+  :hasFrequency 1 ;
+  :hasSeverity 8 .
+
+### Perpetrator
+:Perpetrator1 a :Perpetrator ;
+  rdfs:label "The Government" .
+
+### Victim
+:Victim1 a :Victim ;
+  rdfs:label "The applicant" .
+
+### Context
+:Context1 a :Context ;
+  rdfs:label "The Human Rights Building" .
+
+### Consequence
+:Consequence1 a :Consequence ;
+  rdfs:label "The Court dismissed the preliminary objection concerning the exhaustion of domestic remedies by eighteen votes to three. The Court dismissed unanimously the preliminary objection concerning abuse of process. The Court held by fourteen votes to seven that there had been a violation of Article 3 of the Convention. The Court held by sixteen votes to five that there had been a violation of Article 13 of the Convention. The Court held by twenty votes to one that it was not necessary to consider the applicant’s complaint under Article 6 § 1 of the Convention. The Court held unanimously that there had been no violation of Article 25 § 1 of the Convention. The Court held unanimously that it was not necessary to consider the applicant’s complaints under Articles 28 § 1 (a) and 53 of the Convention. The Court held by eighteen votes to three that the respondent State is to pay the applicant, within three months, in respect of compensation for non-pecuniary damage, 25,000 (twenty-five thousand) pounds sterling to be converted into Turkish liras at the rate applicable on the date of settlement. Simple interest at an annual rate of 8% shall be payable from the expiry of the above-mentioned three months until settlement. The Court dismissed unanimously the remainder of the applicant’s claim for just satisfaction." .
+
+### Abuse
+:Abuse2 a :Abuse ;
+  :hasPerpetrator :Perpetrator2 ;
+  :hasVictim :Victim2 ;
+  :hasContext :Context2 ;
+  :hasConsequence :Consequence2 ;
+  :hasDate "1997-09-25"^^xsd:date ;
+  :hasLocation "Strasbourg" ;
+  :hasDuration "P1D"^^xsd:duration ;
+  :hasFrequency 1 ;
+  :hasSeverity 8 .
+
+### Perpetrator
+:Perpetrator2 a :Perpetrator ;
+  rdfs:label "The respondent State" .
+
+### Victim
+:Victim2 a :Victim ;
+  rdfs:label "The applicant" .
+
+### Context
+:Context2 a :Context ;
+  rdfs:label "The Human Rights Building" .
+
+### Consequence
+:Consequence2 a :Consequence ;
+  rdfs:label "The Court held by sixteen votes to five that the respondent State is to pay directly to the applicant’s United Kingdom-based representatives, within three months, in respect of costs and expenses 34,360 (thirty-four thousand three hundred and sixty) pounds sterling together with any VAT that may be chargeable, less 19,145 (nineteen thousand one hundred and forty-five) French francs to be converted into pounds sterling at the rate applicable on the date of delivery of the present judgment; and her Turkish representatives 3,000 (three thousand) pounds sterling to be converted into Turkish liras at the rate applicable on the date of settlement." .

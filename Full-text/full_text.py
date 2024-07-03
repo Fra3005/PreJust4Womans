@@ -93,7 +93,7 @@ def specialize_ontology(document):
     retrieval_chain = create_retrieval_chain(retriever, document_chain) #
     onto = read_txt("Commons\\base_ontology.txt")                  
     response = retrieval_chain.invoke({"input" : onto})
-    with open(f"Commons\\final_onto.owl","w",encoding="utf-8") as f:
+    with open(f"Commons\\final_onto1.owl","w",encoding="utf-8") as f:
             f.write(response["answer"])
 
 #function to generate cqs
@@ -145,24 +145,10 @@ def make_answers():
             f.write(response)
 
 
-#function to generate a single ontology. In kg1 and kg2 will be substituted each time the couple of new kg, in order to create the final one.
-def generate_single_KG():
 
-    kg1="Full-text\ontology_creation\Knowledge_graph\CASE OF A AND B v. GEORGIA.txt"
-    kg2="Full-text\ontology_creation\Knowledge_graph\CASE OF A. v. CROATIA.txt"
+#PIPELINE TO GENERATE ALL THE FILES NEEDED
 
-    model = Together(model = "mistralai/Mixtral-8x22B-Instruct-v0.1", max_tokens=3000, temperature= 0.6) 
-    time.sleep(5)
-    template = read_txt("Prompt\\unify_kgs_prompt.txt")
-    prompt = PromptTemplate.from_template(template)
-    chain = prompt | model | StrOutputParser()
-    response = chain.invoke({"kg1": kg1, "kg2": kg2})
-    with open("Full-text\ontology_creation\Knowledge_graph\\all_doc_in_one.ttl", 'w', encoding="utf-8") as f:
-        f.write(response)
-
-
-specialize_ontology("Full-text\data\CASE OF A AND B v. GEORGIA.txt")
-kg_from_ontology()
-generate_CQ()
-make_answers()
-generate_single_KG()
+#specialize_ontology("Full-text\data\CASE OF A AND B v. GEORGIA.txt")
+# kg_from_ontology()
+# generate_CQ()
+# make_answers()

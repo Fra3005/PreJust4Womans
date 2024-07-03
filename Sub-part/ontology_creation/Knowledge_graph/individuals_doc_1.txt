@@ -1,0 +1,54 @@
+@prefix : <http://example.org/abuse-of-women#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Individuals
+:Case_A a :LegalCase ;
+    :hasLegalStatus "admissible" ;
+    :hasLegalOutcome "violation of Article 8 of the Convention" ;
+    :hasLegalDamages 9470.0 ;
+    :hasLegalCosts 4470.0 ;
+    :hasLegalJudge "European Court of Human Rights" ;
+    :hasLegalReason "The respondent State is to pay the applicant" .
+
+:Abuse_A a :PhysicalAbuse ;
+    :hasPerpetrator :Perpetrator_B ;
+    :hasVictim :Victim_A ;
+    :hasContext :Context_A ;
+    :hasConsequence :Consequence_A ;
+    :hasLocation "Croatia" ;
+    :hasDuration "P2Y"^^xsd:duration ;
+    :hasFrequency 3 ;
+    :hasSeverity 5 .
+
+:Perpetrator_B a :Perpetrator ;
+    rdfs:label "B" ;
+    rdfs:comment "The individual found guilty of making death threats." .
+
+:Victim_A a :Victim ;
+    rdfs:label "Applicant" ;
+    rdfs:comment "The person who reported frequent incidents involving verbal and physical violence." .
+
+:Context_A a :Context ;
+    rdfs:comment "Incidents of verbal and physical violence, death threats by B." .
+
+:Consequence_A a :Consequence ;
+    rdfs:comment "Sentenced to imprisonment and ordered to undergo psychiatric treatment." .
+
+:Violation_A a :Violation ;
+    :hasLegalCase :Case_A ;
+    :hasLegalArticle :Article_8 .
+
+:Article_8 a :LegalArticle ;
+    rdfs:label "Article 8 of the Convention" ;
+    rdfs:comment "Right to respect for private and family life." .
+
+:Judgment_A a :LegalJudgment ;
+    :hasRelatedTo :Abuse_A ;
+    :hasDamages :Damages_A .
+
+:Damages_A a :Damages ;
+    rdfs:label "EUR 9470" ;
+    rdfs:comment "Damages awarded

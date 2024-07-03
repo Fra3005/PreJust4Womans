@@ -1,0 +1,14 @@
+Question,Answer
+What is the legal outcome of Case?,"violation"
+Which legal case is associated with Violation?,"LegalCase1"
+What is the legal status?,"admissible"
+How much in legal damages and costs were awarded?,"Damages: 4000.00; Costs: 1000.00"
+Which court judged the Case?,
+What is the reason stated for the judgment?,"violation of Article 8 of the Convention"
+What is the context of Abuse?,"Violation of Article 8 of the Convention"
+What are the consequences of Abuse?,"Non-pecuniary damage and costs and expenses"
+What is the duration and frequency of Abuse?,
+What is the severity level of Abuse?,
+Which legal article are violated?,"Article 8 of the Convention"
+What abuse is related to Judgment?,"Abuse1"
+What are the damages related to Judgment?,"4000.00"
